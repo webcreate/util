@@ -1,0 +1,18 @@
+{
+    "name": "webcreate/util",
+    "description": "Webcreate/Util is a PHP library containing some simple utility classes.",
+    "authors": [
+        {
+            "name": "Jeroen Fiege",
+            "email": "jeroen@webcreate.nl"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Webcreate": "src/"
+        }
+    },
+    "require": {
+        "symfony/process": ">=2.1.2"
+    }
+}
