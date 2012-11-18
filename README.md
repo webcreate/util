@@ -2,6 +2,8 @@
 
 Webcreate/Util is a PHP library containing some simple utility classes.
 
+[![Build Status](https://secure.travis-ci.org/webcreate/util.png?branch=master)](https://travis-ci.org/webcreate/util)
+
 Installation / Usage
 --------------------
 
