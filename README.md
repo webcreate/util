@@ -27,3 +27,10 @@ themselves. To create libraries/packages please read the [guidelines](https://pa
     ```
 
 3. Run Composer: `php composer.phar install`
+
+Overview utility classes
+------------------------
+
+[Cli](docs/Cli.md)
+
+The Cli class is a small wrapper around Symfony Process component.
