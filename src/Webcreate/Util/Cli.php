@@ -17,25 +17,48 @@ use Symfony\Component\Process\Process;
 class Cli
 {
     protected $process;
+    protected $timeout = 120;
+
+    /**
+     * Set timeout
+     *
+     * @param int $timeout
+     * @return $this
+     */
+    public function setTimeout($timeout)
+    {
+        $this->timeout = $timeout;
+
+        return $this;
+    }
+
+    /**
+     * Returns timeout
+     *
+     * @return int
+     */
+    public function getTimeout()
+    {
+        return $this->timeout;
+    }
 
     /**
      * Prepares a commandline
      *
-     * @param string $command
-     * @param array  $arguments
+     * @param  string $command
+     * @param  array  $arguments
      * @return string
      */
     public function prepare($command, array $arguments = array())
     {
         $commandline = $command;
 
-        foreach($arguments as $option => $value) {
+        foreach ($arguments as $option => $value) {
             if (is_bool($value)) {
                 if ($value === true) {
                     $commandline .= ' ' . $option;
                 }
-            }
-            else {
+            } else {
                 $seperator = ' ';
                 if (!is_integer($option)) {
                     $commandline .= ' ' . $option;
@@ -63,7 +86,7 @@ class Cli
      * @param string               $commandline The command line to run
      * @param Closure|string|array $callback    A PHP callback to run whenever there is some
      *                                          output available on STDOUT or STDERR
-     * @param string               $cwd         The working directory
+     * @param string $cwd The working directory
      *
      * @return integer The exit status code
      *
@@ -71,7 +94,7 @@ class Cli
      */
     public function execute($commandline, $callback = null, $cwd = null)
     {
-        $this->process = new Process($commandline, $cwd);
+        $this->process = new Process($commandline, $cwd, null, null, $this->timeout);
 
         return $this->process->run($callback);
     }
