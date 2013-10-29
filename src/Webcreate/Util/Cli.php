@@ -66,11 +66,20 @@ class Cli
                         $seperator = '';
                     }
                 }
-                $commandline .= $seperator . escapeshellarg($value);
+                $commandline .= $seperator . $this->escapeArgument($value);
             }
         }
 
         return $commandline;
+    }
+
+    protected function escapeArgument($arg)
+    {
+        if (defined('PHP_WINDOWS_VERSION_MAJOR') && strpos($arg, '%') !== FALSE) {
+            return '"'.$arg.'"';
+        }
+
+        return escapeshellarg($arg);
     }
 
     /**
