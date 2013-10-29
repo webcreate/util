@@ -19,6 +19,6 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/process": ">=2.1.2"
+        "symfony/process": "~2.3"
     }
 }

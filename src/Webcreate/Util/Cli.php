@@ -8,6 +8,7 @@
 namespace Webcreate\Util;
 
 use Symfony\Component\Process\Process;
+use Symfony\Component\Process\ProcessUtils;
 
 /**
  * Command line interface utility
@@ -66,7 +67,7 @@ class Cli
                         $seperator = '';
                     }
                 }
-                $commandline .= $seperator . escapeshellarg($value);
+                $commandline .= $seperator . ProcessUtils::escapeArgument($value);
             }
         }
 
