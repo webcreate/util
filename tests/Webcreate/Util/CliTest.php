@@ -29,7 +29,7 @@ class CliTest extends PHPUnit_Framework_TestCase
                 array('abc', array('-n' => true, 'arg2'), 'abc -n "arg2"'),
                 array('abc', array('-n' => false, 'arg2', 'arg3'), 'abc "arg2" "arg3"'),
                 array('echo', array('-x' => 'hello world'), 'echo -x "hello world"'),
-                array('git', array('log' => '%H%n'), 'git log "%H%n"'),
+                array('git', array('log' => true, '--format=' => '%H%cr'), 'git log --format=^%"H"^%"cr"'),
            );
 
         } else {
